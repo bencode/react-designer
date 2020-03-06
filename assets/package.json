@@ -1,24 +1,28 @@
 {
-  "repository": {},
-  "license": "MIT",
+  "name": "pageviver",
+  "version": "0.1.0",
   "scripts": {
-    "deploy": "webpack --mode production",
-    "watch": "webpack --mode development --watch"
+    "lint": "eslint lib/quora/web/static",
+    "stylelint": "stylelint src/**/*.scss",
+    "start": "webpack --watch-stdin --progress --color --mode development --config webpack.config.js",
+    "clean": "rm -rf ../priv/static/*.*",
+    "build": "npm run clean && NODE_ENV=production webpack --mode production --config webpack.config.js"
   },
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
-    "phoenix_html": "file:../deps/phoenix_html"
+    "phoenix_html": "file:../deps/phoenix_html",
+    "react": "^16.13.0",
+    "react-dom": "^16.13.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "babel-loader": "^8.0.0",
-    "copy-webpack-plugin": "^5.1.1",
-    "css-loader": "^3.4.2",
-    "mini-css-extract-plugin": "^0.9.0",
-    "optimize-css-assets-webpack-plugin": "^5.0.1",
-    "terser-webpack-plugin": "^2.3.2",
-    "webpack": "4.41.5",
-    "webpack-cli": "^3.3.2"
-  }
+    "bcd-react-webpack": "^10.0.0-beta.1",
+    "eslint": "^6.8.0",
+    "eslint-config-bcd-react": "^3.0.0",
+    "stylelint": "^13.2.0",
+    "stylelint-config-bcd": "^1.0.0",
+    "webpack": "^4.42.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.10.3"
+  },
+  "license": "MIT"
 }

@@ -1,0 +1,6 @@
+{
+  extends: "@hlj/stylelint-config-base",
+  rules: {
+  }
+}
+
