@@ -4,9 +4,11 @@
   "scripts": {
     "lint": "eslint lib/quora/web/static",
     "stylelint": "stylelint src/**/*.scss",
-    "start": "webpack --watch-stdin --progress --color --mode development --config webpack.config.js",
+    "start": "webpack --watch-stdin --progress --color",
     "clean": "rm -rf ../priv/static/*.*",
-    "build": "npm run clean && NODE_ENV=production webpack --mode production --config webpack.config.js"
+    "build": "npm run clean && NODE_ENV=production webpack",
+    "test": "test-mate",
+    "cov": "test-mate --coverage"
   },
   "dependencies": {
     "phoenix": "file:../deps/phoenix",
@@ -15,9 +17,10 @@
     "react-dom": "^16.13.0"
   },
   "devDependencies": {
-    "bcd-react-webpack": "^10.0.0-beta.1",
+    "bcd-react-webpack": "^10.0.0",
     "eslint": "^6.8.0",
     "eslint-config-bcd-react": "^3.0.0",
+    "react-test-mate": "^3.0.0",
     "stylelint": "^13.2.0",
     "stylelint-config-bcd": "^1.0.0",
     "webpack": "^4.42.0",
