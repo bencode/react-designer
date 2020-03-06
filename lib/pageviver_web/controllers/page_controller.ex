@@ -2,6 +2,6 @@ defmodule PageviverWeb.PageController do
   use PageviverWeb, :controller
 
   def index(conn, _params) do
-    render(conn, "index.html")
+    render(conn, "index.html", assets: "design")
   end
 end

@@ -5,11 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title><%= assigns[:page_title] || "Pageviver" %></title>
-    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/app.css") %>"/>
-    <%= csrf_meta_tag() %>
+    <% assets = assigns[:assets] %>
+    <%= if assets do %>
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/#{assets}.css") %>">
+    <% end %>
   </head>
   <body>
     <%= render @view_module, @view_template, assigns %>
-    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/app.js") %>"></script>
+    <%= if assets do %>
+    <script type="text/javascript" src="<%= Routes.static_path(@conn, "/js/#{assets}.js") %>"></script>
+    <% end %>
   </body>
 </html>
