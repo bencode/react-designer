@@ -17,6 +17,8 @@ defmodule PageviverWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    resources "/widgets", WidgetController, only: [:new]
   end
 
   # Other scopes may use custom stacks.
