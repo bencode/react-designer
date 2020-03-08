@@ -1,6 +1,6 @@
 import React from 'react';
 import $t from 'prop-types';
-import style from './style.scss';
+import style from './style.less';
 
 const DefaultLayout = ({ parts }) => {
   return (

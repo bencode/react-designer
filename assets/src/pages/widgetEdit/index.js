@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Workbench } from '@/workbench';
-import './style.scss';
+import './style.less';
 
 
 const App = () => {

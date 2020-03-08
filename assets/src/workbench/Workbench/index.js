@@ -1,7 +1,7 @@
 import React from 'react';
 import $t from 'prop-types';
 import DefaultLayout from '../DefaultLayout';
-import style from './style.scss';
+import style from './style.less';
 
 const Layouts = {
   default: DefaultLayout
