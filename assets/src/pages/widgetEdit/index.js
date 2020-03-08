@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import style from './style.scss';
+import { Workbench } from '@/workbench';
+import './style.scss';
 
 
 const App = () => {
   return (
-    <div className={style.app}>Hello</div>
+    <Workbench />
   );
 };
 
