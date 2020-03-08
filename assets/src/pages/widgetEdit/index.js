@@ -5,8 +5,9 @@ import './style.scss';
 
 
 const App = () => {
+  const parts = [];
   return (
-    <Workbench />
+    <Workbench parts={parts} />
   );
 };
 

@@ -1,0 +1,30 @@
+:local(.layout) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+:local(.header) {
+  min-height: 50px;
+  background: linear-gradient(to bottom, #f5f5f5, #cdcdcd);
+  border-bottom: 1px solid #a7a7a7;
+}
+
+:local(.body) {
+  flex: 1;
+  display: flex;
+}
+
+:local(.left) {
+  width: 260px;
+  border-right: 1px solid #d0d0d0;
+}
+
+:local(.main) {
+  flex: 1;
+}
+
+:local(.right) {
+  width: 240px;
+  border-left: 1px solid #d0d0d0;
+}
