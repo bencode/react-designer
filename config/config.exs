@@ -5,7 +5,7 @@
 # is restricted to this project.
 
 # General application configuration
-import Config
+use Mix.Config
 
 config :pageviver,
   ecto_repos: [Pageviver.Repo]
