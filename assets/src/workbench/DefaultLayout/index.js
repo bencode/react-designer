@@ -2,7 +2,7 @@ import React from 'react';
 import $t from 'prop-types';
 import style from './style.less';
 
-const DefaultLayout = ({ parts }) => {
+const DefaultLayout = () => {
   return (
     <div className={style.layout}>
       <header className={style.header}>

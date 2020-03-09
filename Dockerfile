@@ -26,8 +26,8 @@ RUN mix deps.compile
 ADD . .
 
 # uncomment following line to enable digesting in Phoenix project
-RUN yarn install --cwd assets
-RUN yarn build --cwd assets
+RUN yarn --cwd assets install --registry=https://registry.npm.taobao.org
+RUN yarn --cwd assets build
 RUN mix phx.digest
 
 RUN mix release --path /app --quiet
