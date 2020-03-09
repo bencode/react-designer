@@ -1947,10 +1947,10 @@ batch@0.6.1:
   resolved "https://registry.npm.taobao.org/batch/download/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
   integrity sha1-3DQxT05nkxgJP8dgJyUl+UvyXBY=
 
-bcd-react-webpack@^10.2.2:
-  version "10.2.2"
-  resolved "https://registry.npmjs.org/bcd-react-webpack/-/bcd-react-webpack-10.2.2.tgz#f14631d6a45596740f2c98552aba94482c4ccddf"
-  integrity sha512-LmQW8oLFdDpVB5l5LcNe+gkE5aqeZtspklKNaBswb3yt2Tkrxu1VDXwppnJmv0MPpZwZvEbMlx5XejoOFmehew==
+bcd-react-webpack@^10.3.0:
+  version "10.3.0"
+  resolved "https://registry.npmjs.org/bcd-react-webpack/-/bcd-react-webpack-10.3.0.tgz#79b7b60ba744f11f3ae8bf33e2f8d94b2d94c889"
+  integrity sha512-QPdGu8pAR2uvbPSAugLDejsdJcUOob3NZDu7M1uJ54YgLWKYD4kn4dkBvE36JfPzNvIrY91NDhMzOZTWgIGiFw==
   dependencies:
     "@babel/core" "^7.1.6"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
