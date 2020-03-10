@@ -6,8 +6,10 @@ import style from './style.less';
 const DefaultLayout = () => {
   const [width, setWidth] = useState(260);
   const handleDrag = e => {
-    const pageX = e.pageX;
-    setWidth(pageX + 2);
+    const next = e.pageX + 2;
+    if (inrange([100, 800], next)) {
+      setWidth(next);
+    }
   };
 
   return (
@@ -35,3 +37,7 @@ DefaultLayout.propTypes = {
 };
 
 export default DefaultLayout;
+
+function inrange([min, max], now) {
+  return min <= now && now <= max;
+}
