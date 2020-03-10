@@ -16,6 +16,7 @@
 }
 
 :local(.left) {
+  position: relative;
   width: 260px;
   border-right: 1px solid #d0d0d0;
 }
@@ -27,4 +28,13 @@
 :local(.right) {
   width: 240px;
   border-left: 1px solid #d0d0d0;
+}
+
+:local(.resizebar) {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 5px;
+  cursor: col-resize;
 }

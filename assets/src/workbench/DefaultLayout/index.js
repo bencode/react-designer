@@ -1,5 +1,6 @@
 import React from 'react';
 import $t from 'prop-types';
+import { DraggableCore } from 'react-draggable';
 import style from './style.less';
 
 const DefaultLayout = () => {
@@ -9,6 +10,9 @@ const DefaultLayout = () => {
       </header>
       <main className={style.body}>
         <div className={style.left}>
+          <DraggableCore>
+            <div className={style.resizebar}></div>
+          </DraggableCore>
         </div>
         <div className={style.main}>
         </div>
