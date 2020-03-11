@@ -4,10 +4,12 @@ import { DraggableCore } from 'react-draggable';
 import style from './style.less';
 
 const DefaultLayout = () => {
+  const leftSize = [100, 800];
   const [width, setWidth] = useState(260);
   const handleDrag = e => {
+    console.log(e);
     const next = e.pageX + 2;
-    if (inrange([100, 800], next)) {
+    if (inrange(leftSize, next)) {
       setWidth(next);
     }
   };
