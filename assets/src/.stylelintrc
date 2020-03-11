@@ -1,5 +1,5 @@
 {
-  extends: "@hlj/stylelint-config-base",
+  extends: "stylelint-config-bcd",
   rules: {
   }
 }

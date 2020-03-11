@@ -2,13 +2,14 @@
   "name": "pageviver",
   "version": "0.1.0",
   "scripts": {
-    "lint": "eslint lib/quora/web/static",
-    "stylelint": "stylelint src/**/*.scss",
+    "lint": "eslint src",
+    "stylelint": "stylelint src/**/*.less",
     "start": "webpack --watch-stdin --progress --color",
     "clean": "rm -rf ../priv/static/*.*",
     "build": "npm run clean && NODE_ENV=production webpack",
     "test": "test-mate",
-    "cov": "test-mate --coverage"
+    "cov": "test-mate --coverage",
+    "ci": "npm run stylelint && npm run lint && npm run cov"
   },
   "dependencies": {
     "normalize.css": "^8.0.1",
