@@ -14,7 +14,7 @@ test('parse error should return null', () => {
   window.localStorage.setItem('invalid', '{error');
   const fn = jest.spyOn(console, 'error')
     .mockImplementation(e => {
-      expect(e instanceof SyntaxError).toBe(true);
+      expect(e).toBeInstanceOf(SyntaxError);
     });
   expect(storage.get('invalid')).toBe(null);
   expect(fn).toBeCalled();
