@@ -18,26 +18,25 @@ const DefaultLayout = ({ parts }) => {
     }
   };
 
+  const leftParts = parts.filter(regionEq('left'));
   const mainParts = parts.filter(regionEq('main'));
+  const rightParts = parts.filter(regionEq('right'));
 
   return (
     <div className={style.layout}>
-      <header className={style.header}>
-      </header>
+      <header className={style.header}></header>
       <main className={style.body}>
         <div className={style.left} style={{ width: `${width}px` }}>
+          <Parts parts={leftParts} />
           <DraggableCore onDrag={handleDrag}>
             <div className={style.resizebar}></div>
           </DraggableCore>
         </div>
         <div className={style.main}>
-          {
-            mainParts.map(part => (
-              <div key={part} className={style.part}>{part.component()}</div>
-            ))
-          }
+          <Parts parts={mainParts} />
         </div>
         <div className={style.right}>
+          <Parts parts={rightParts} />
         </div>
       </main>
     </div>
@@ -50,6 +49,20 @@ DefaultLayout.propTypes = {
 };
 
 export default DefaultLayout;
+
+const Parts = ({ parts }) => (
+  <>
+  {
+    parts.map((part, index) => (
+      <div key={index} className={style.part}>{part.component()}</div>
+    ))
+  }
+  </>
+);
+
+Parts.propTypes = {
+  parts: $t.array.isRequired
+};
 
 
 function inrange([min, max], now) {
