@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
 import $t from 'prop-types';
+import { propEq } from 'ramda';
 import { DraggableCore } from 'react-draggable';
 import pref from '@/workbench/utils/pref';
 import style from './style.less';
 
-const DefaultLayout = () => {
+const regionEq = propEq('region');
+
+const DefaultLayout = ({ parts }) => {
   const leftSize = [100, 800];
   const [width, setWidth] = useState(pref.get('leftWidth', 260));
   const handleDrag = e => {
@@ -14,6 +17,8 @@ const DefaultLayout = () => {
       pref.set('leftWidth', next);
     }
   };
+
+  const mainParts = parts.filter(regionEq('main'));
 
   return (
     <div className={style.layout}>
@@ -26,6 +31,11 @@ const DefaultLayout = () => {
           </DraggableCore>
         </div>
         <div className={style.main}>
+          {
+            mainParts.map(part => (
+              <div key={part} className={style.part}>{part.component()}</div>
+            ))
+          }
         </div>
         <div className={style.right}>
         </div>
@@ -36,10 +46,11 @@ const DefaultLayout = () => {
 
 
 DefaultLayout.propTypes = {
-  parts: $t.arrayOf($t.node).isRequired
+  parts: $t.array.isRequired
 };
 
 export default DefaultLayout;
+
 
 function inrange([min, max], now) {
   return min <= now && now <= max;

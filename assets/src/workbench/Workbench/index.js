@@ -16,9 +16,15 @@ const Workbench = ({ layout = 'default', parts }) => {
   );
 };
 
+
+const TypePart = $t.shape({
+  region: $t.string.isRequired,
+  component: $t.elementType.isRequired
+});
+
 Workbench.propTypes = {
   layout: $t.string,
-  parts: $t.array.isRequired
+  parts: $t.arrayOf(TypePart).isRequired
 };
 
 export default Workbench;

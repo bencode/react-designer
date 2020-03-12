@@ -1,6 +1,7 @@
 {
   extends: 'bcd-react',
   rules: {
-   import/prefer-default-export: 0
+   import/prefer-default-export: 0,
+   react/display-name: 0
   }
 }
