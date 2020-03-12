@@ -1,11 +1,13 @@
 import React from 'react';
 import $t from 'prop-types';
+import cx from 'classnames';
 import style from './style.less';
 
 const Simulator = () => {
   return (
-    <div className={style.simulator}>
-      Simulator
+    <div className={cx(style.simulator, 'viver-iphonex')}>
+      <div className={cx(style.container)}>
+      </div>
     </div>
   );
 };
