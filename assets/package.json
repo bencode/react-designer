@@ -12,6 +12,7 @@
     "ci": "npm run stylelint && npm run lint && npm run cov"
   },
   "dependencies": {
+    "@hyder/component": "^1.5.2",
     "classnames": "^2.2.6",
     "normalize.css": "^8.0.1",
     "phoenix": "file:../deps/phoenix",
@@ -19,7 +20,9 @@
     "ramda": "^0.27.0",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-draggable": "^4.2.0"
+    "react-draggable": "^4.2.0",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "devDependencies": {
     "bcd-react-webpack": "^10.3.0",
