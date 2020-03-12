@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "lint": "eslint src",
-    "stylelint": "stylelint src/**/*.less",
+    "stylelint": "stylelint **/*.less",
     "start": "webpack --watch-stdin --progress --color",
     "clean": "rm -rf ../priv/static/*.*",
     "build": "npm run clean && NODE_ENV=production webpack",
