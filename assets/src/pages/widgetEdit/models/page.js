@@ -39,6 +39,41 @@ export default {
                 children: 'World'
               }
             ]
+          },
+          'PageViver',
+          {
+            id: 4,
+            type: 'ul',
+            children: [
+              {
+                id: 5,
+                type: 'li',
+                children: 'React'
+              },
+              {
+                id: 6,
+                type: 'li',
+                children: 'Online'
+              },
+              {
+                id: 7,
+                type: 'li',
+                children: 'Editor'
+              },
+              {
+                id: 8,
+                type: 'li',
+                styles: {
+                  color: '#00f'
+                },
+                children: 'Visual'
+              },
+              {
+                id: 9,
+                type: 'li',
+                children: 'Weaver'
+              }
+            ]
           }
         ]
       };

@@ -18,7 +18,7 @@ const Simulator = () => {
   return (
     <div className={cx(style.simulator, 'viver-iphonex')}>
       <div className={cx(style.container)}>
-        { widget && render(widget) }
+        { widget && <Widget widget={widget} /> }
       </div>
     </div>
   );
@@ -31,10 +31,17 @@ Simulator.propTypes = {
 export default Simulator;
 
 
-function render(widget) {
+const Widget = ({ widget }) => {
   const { elements, useStyles } = processWidget(widget);
-  return <Elements elements={elements} useStyles={useStyles} />;
-}
+  const styles = useStyles();
+  return createElements(elements, styles);
+};
+
+Widget.propTypes = {
+  widget: $t.shape({
+    elements: $t.array
+  }).isRequired
+};
 
 
 function processWidget({ elements }) {
@@ -58,9 +65,7 @@ function processWidget({ elements }) {
 }
 
 
-const Elements = ({ elements, useStyles }) => {
-  const styles = useStyles();
-
+function createElements(elements, styles) {
   if (!Array.isArray(elements)) {
     return elements;
   }
@@ -75,18 +80,10 @@ const Elements = ({ elements, useStyles }) => {
       className: styles[getClassName(element)]
     };
 
-    const children = (
-      <Elements elements={element.children} useStyles={useStyles} />
-    );
+    const children = createElements(element.children, styles);
     return React.createElement(element.type, props, children);
   });
-};
-
-
-Elements.propTypes = {
-  elements: $t.any,
-  useStyles: $t.func.isRequired
-};
+}
 
 
 function getClassName(element) {
