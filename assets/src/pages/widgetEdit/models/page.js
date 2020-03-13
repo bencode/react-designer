@@ -12,7 +12,7 @@ export default {
           {
             id: 1,
             type: 'div',
-            props: {
+            styles: {
               display: 'flex',
               width: '100px',
               height: '50px',
@@ -23,7 +23,7 @@ export default {
               {
                 id: 2,
                 type: 'span',
-                props: {
+                styles: {
                   fontSize: '14px',
                   lineHeight: '1.4'
                 },
@@ -32,7 +32,7 @@ export default {
               {
                 id: 3,
                 type: 'span',
-                props: {
+                styles: {
                   fontSize: '18px',
                   color: '#f00'
                 },

@@ -1,10 +1,14 @@
 import React, { useEffect } from 'react';
+import $t from 'prop-types';
 import cx from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
+import { createUseStyles } from 'react-jss';
 import style from './style.less';
+
 
 const Simulator = () => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch({ type: 'page/mount' });
   }, []);
@@ -14,10 +18,7 @@ const Simulator = () => {
   return (
     <div className={cx(style.simulator, 'viver-iphonex')}>
       <div className={cx(style.container)}>
-        {widget ?
-          createElements(widget.elements) :
-          <Loading />
-        }
+        { widget && render(widget) }
       </div>
     </div>
   );
@@ -30,26 +31,72 @@ Simulator.propTypes = {
 export default Simulator;
 
 
-const Loading = () => (
-  <div>loading...</div>
-);
-
-
-function createElements(elements) {
-  if (!Array.isArray(elements)) {
-    return elements;
-  }
-  return elements.map(element => {
-    return isElement(element) ?
-      React.createElement(
-        element.type, { key: element.id },
-        createElements(element.children)
-      ) :
-      element;
-  });
+function render(widget) {
+  const { elements, useStyles } = processWidget(widget);
+  return <Elements elements={elements} useStyles={useStyles} />;
 }
 
 
+function processWidget({ elements }) {
+  const styles = {};
+
+  const process = children => {
+    if (!Array.isArray(children)) {
+      return;
+    }
+    children.forEach(element => {
+      if (!isElement(element) || isEmpty(element.styles)) {
+        return;
+      }
+      styles[getClassName(element)] = { ...element.styles };
+      process(element.children);
+    });
+  };
+  process(elements);
+
+  return { elements, useStyles: createUseStyles(styles) };
+}
+
+
+const Elements = ({ elements, useStyles }) => {
+  const styles = useStyles();
+
+  if (!Array.isArray(elements)) {
+    return elements;
+  }
+
+  return elements.map(element => {
+    if (!isElement(element)) {
+      return element;
+    }
+
+    const props = {
+      key: element.id,
+      className: styles[getClassName(element)]
+    };
+
+    const children = (
+      <Elements elements={element.children} useStyles={useStyles} />
+    );
+    return React.createElement(element.type, props, children);
+  });
+};
+
+
+Elements.propTypes = {
+  elements: $t.any,
+  useStyles: $t.func.isRequired
+};
+
+
+function getClassName(element) {
+  return element.name || `${element.type}-${element.id}`;
+}
+
 function isElement(obj) {
   return obj && typeof obj.type === 'string';
+}
+
+function isEmpty(obj) {
+  return !obj || Object.keys(obj).length === 0;
 }
