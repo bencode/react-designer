@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "eslint src",
     "stylelint": "stylelint **/*.less",
-    "start": "webpack --watch-stdin --progress --color",
+    "start": "webpack --watch --progress --color",
     "clean": "rm -rf ../priv/static/*.*",
     "build": "npm run clean && NODE_ENV=production webpack",
     "test": "test-mate",
