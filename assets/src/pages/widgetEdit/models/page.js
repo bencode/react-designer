@@ -58,6 +58,11 @@ export default {
               {
                 id: 7,
                 type: 'li',
+                styles: {
+                  border: '1px dashed #0ff',
+                  width: '100px',
+                  fontSize: '24px'
+                },
                 children: 'Editor'
               },
               {
