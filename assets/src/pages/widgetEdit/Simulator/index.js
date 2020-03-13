@@ -3,7 +3,11 @@ import $t from 'prop-types';
 import cx from 'classnames';
 import { useSelector, useDispatch } from 'react-redux';
 import { createUseStyles } from 'react-jss';
+import createDebug from 'debug';
 import style from './style.less';
+
+
+const debug = createDebug('pageviver:Simulator');
 
 
 const Simulator = () => {
@@ -52,14 +56,18 @@ function processWidget({ elements }) {
       return;
     }
     children.forEach(element => {
-      if (!isElement(element) || isEmpty(element.styles)) {
+      if (!isElement(element)) {
         return;
       }
-      styles[getClassName(element)] = { ...element.styles };
+      if (!isEmpty(element.styles)) {
+        styles[getClassName(element)] = { ...element.styles };
+      }
       process(element.children);
     });
   };
   process(elements);
+
+  debug('styles %o', styles);
 
   return { elements, useStyles: createUseStyles(styles) };
 }
