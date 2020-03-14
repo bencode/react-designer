@@ -29,6 +29,7 @@ ADD . .
 RUN yarn --cwd assets install --registry=https://registry.npm.taobao.org
 RUN yarn --cwd assets build
 RUN mix phx.digest
+RUN yarn --cwd assets upload
 
 RUN mix release --path /app --quiet
 RUN cd /app && rm -rf /app/src
