@@ -6,5 +6,5 @@ module.exports = createConfig({
   digest: false,
   distPath: '../priv/static',
   publicPath: env === 'development' ? '/' :
-    'https://pageviver.oss-cn-shanghai.aliyuncs.com'
+    'pageviver.oss-cn-shanghai.aliyuncs.com'
 });

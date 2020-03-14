@@ -7,6 +7,7 @@
     "start": "webpack --watch --progress --color",
     "clean": "rm -rf ../priv/static/*.*",
     "build": "npm run clean && NODE_ENV=production webpack",
+    "upload": "oss-upload ../priv/static -o / -c oss.secret.js",
     "test": "test-mate",
     "cov": "test-mate --coverage",
     "ci": "npm run stylelint && npm run lint && npm run cov"
@@ -27,6 +28,7 @@
     "redux": "^4.0.5"
   },
   "devDependencies": {
+    "ali-oss-upload-cli": "1.3.0",
     "bcd-react-webpack": "^10.3.0",
     "eslint": "^6.8.0",
     "eslint-config-bcd-react": "^3.0.0",
