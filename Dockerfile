@@ -6,9 +6,8 @@ ARG app_vsn
 ARG app_revision
 ARG mix_env=prod
 ARG hex_mirror_url=https://hexpm.upyun.com
-
-ARG OSS_ACCESS_KEY_ID
-ARG OSS_ACCESS_KEY_SECRET
+ARG oss_access_key_id
+ARG oss_access_key_secret
 
 ENV REPLACE_OS_VARS=true \
     APP_VSN=${app_vsn} \
@@ -16,8 +15,8 @@ ENV REPLACE_OS_VARS=true \
     MIX_ENV=${mix_env} \
     HEX_MIRROR_URL=${hex_mirror_url} \
     APP_REVISION=${app_revision} \
-    OSS_ACCESS_KEY_ID=${OSS_ACCESS_KEY_ID} \
-    OSS_ACCESS_KEY_SECRET=${OSS_ACCESS_KEY_SECRET}
+    OSS_ACCESS_KEY_ID=${oss_access_key_id} \
+    OSS_ACCESS_KEY_SECRET=${oss_access_key_secret}
 
 WORKDIR /app/src
 
