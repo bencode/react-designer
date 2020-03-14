@@ -33,6 +33,5 @@ npm-debug.log
 # this depending on your deployment strategy.
 /priv/static/
 coverage/
-
 /yarn.lock
-
+/node_modules/
