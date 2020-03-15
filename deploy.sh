@@ -10,7 +10,6 @@ docker build \
   -t pageviver .
 
 docker tag pageviver:latest $path
-
 docker push $path
 
-ssh lesscap "cd apps; docker-compose up -d"
+ssh lesscap "cd apps; docker-compose pull && docker-compose up -d"

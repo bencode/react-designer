@@ -4,7 +4,7 @@ defmodule Pageviver.MixProject do
   def project do
     [
       app: :pageviver,
-      version: "0.7.0",
+      version: "0.5.0",
       elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
