@@ -1,5 +1,12 @@
 use Mix.Config
 
+# config :pageviver, Pageviver.Repo,
+#   username: "postgres",
+#   password: "postgres",
+#   database: "pageviver_prod",
+#   hostname: "localhost",
+#   pool_size: 10
+
 # For production, don't forget to configure the url host
 # to something meaningful, Phoenix uses this information
 # when generating URLs.

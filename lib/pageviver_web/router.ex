@@ -1,7 +1,9 @@
 defmodule PageviverWeb.Router do
   use PageviverWeb, :router
+  alias PageviverWeb.Plugs.ResponseTime
 
   pipeline :browser do
+    plug ResponseTime
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_flash
@@ -10,6 +12,7 @@ defmodule PageviverWeb.Router do
   end
 
   pipeline :api do
+    plug ResponseTime
     plug :accepts, ["json"]
   end
 
@@ -21,8 +24,7 @@ defmodule PageviverWeb.Router do
     resources "/widgets", WidgetController, only: [:new]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", PageviverWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", PageviverWeb do
+    pipe_through :api
+  end
 end

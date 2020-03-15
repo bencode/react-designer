@@ -30,7 +30,7 @@ RUN mix deps.compile
 ADD . .
 
 # uncomment following line to enable digesting in Phoenix project
-RUN yarn --cwd assets install --registry https://registry.npm.taobao.org
+RUN yarn --cwd assets install --network-timeout 100000 --registry https://registry.npm.taobao.org
 RUN yarn --cwd assets build
 RUN mix phx.digest
 RUN yarn --cwd assets upload
