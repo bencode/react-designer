@@ -7,6 +7,7 @@ import { Workbench } from '@/workbench';
 import pageModel from './models/page';
 import Simulator from './Simulator';
 import Footer from './Footer';
+import Outline from './Outline';
 import style from './style.less';
 
 
@@ -21,6 +22,10 @@ hyderEnhancer.add([
 
 const App = () => {
   const parts = [
+    {
+      region: 'main',
+      component: () => <Outline />
+    },
     {
       region: 'main',
       component: () => <Simulator />
