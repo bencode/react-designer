@@ -5,9 +5,8 @@ import { Provider } from 'react-redux';
 import { createStoreEnhancer } from '@hyder/component';
 import { Workbench } from '@/workbench';
 import pageModel from './models/page';
-import Simulator from './Simulator';
+import EditPart from './EditPart';
 import Footer from './Footer';
-import Outline from './Outline';
 import style from './style.less';
 
 
@@ -24,11 +23,7 @@ const App = () => {
   const parts = [
     {
       region: 'main',
-      component: () => <Outline />
-    },
-    {
-      region: 'main',
-      component: () => <Simulator />
+      component: () => <EditPart />
     }
   ];
   return (
