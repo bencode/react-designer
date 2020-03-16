@@ -6,7 +6,8 @@ import { createStoreEnhancer } from '@hyder/component';
 import { Workbench } from '@/workbench';
 import pageModel from './models/page';
 import Simulator from './Simulator';
-import './style.less';
+import Footer from './Footer';
+import style from './style.less';
 
 
 const hyderEnhancer = createStoreEnhancer();
@@ -27,7 +28,10 @@ const App = () => {
   ];
   return (
     <Provider store={store}>
-      <Workbench parts={parts} />
+      <div className={style.app}>
+        <Workbench className={style.workbench} parts={parts} />
+        <Footer />
+      </div>
     </Provider>
   );
 };
