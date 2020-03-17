@@ -1,0 +1,13 @@
+version: "3.6"
+
+services:
+  pageviver_postgres:
+    image: sameersbn/postgresql:10
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - PG_PASSWORD=postgres
+      - DB_NAME=pageviver
+    ports:
+      - "55432:5432"
+
