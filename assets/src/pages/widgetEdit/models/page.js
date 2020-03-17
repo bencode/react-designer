@@ -59,7 +59,15 @@ export default {
           ul({
             children: [
               li({
-                children: text('React')
+                children: [
+                  text('React'),
+                  div({
+                    children: [
+                      text('Hello'),
+                      text('OK')
+                    ]
+                  })
+                ]
               }),
 
               li({
