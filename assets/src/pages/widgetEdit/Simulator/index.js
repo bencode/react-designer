@@ -3,6 +3,8 @@ import $t from 'prop-types';
 import cx from 'classnames';
 import { createUseStyles } from 'react-jss';
 import createDebug from 'debug';
+import { isEmpty } from '@/utils/lang';
+import * as $type from '../type';
 import style from './style.less';
 
 
@@ -10,13 +12,13 @@ const debug = createDebug('pageviver:Simulator');
 
 
 const Simulator = ({ widget }) => {
-  const { elements, useStyles } = processWidget(widget);
+  const { nodes, useStyles } = processWidget(widget);
   const styles = useStyles();
 
   return (
     <div className={cx(style.simulator, 'viver-iphonex')}>
       <div className={cx(style.container)}>
-        {createElements(elements, styles)}
+        {createNodes(nodes, styles)}
       </div>
     </div>
   );
@@ -24,68 +26,64 @@ const Simulator = ({ widget }) => {
 
 Simulator.propTypes = {
   widget: $t.shape({
-    elements: $t.array
+    nodes: $t.arrayOf($type.Node).isRequired
   }).isRequired
 };
-
 
 export default Simulator;
 
 
-function processWidget({ elements }) {
+function processWidget({ nodes }) {
   const styles = {};
 
   const process = children => {
     if (!Array.isArray(children)) {
       return;
     }
-    children.forEach(element => {
-      if (!isElement(element)) {
+    children.forEach(node => {
+      if (node.type !== 'element') {
         return;
       }
-      if (!isEmpty(element.styles)) {
-        styles[getClassName(element)] = { ...element.styles };
+      if (!isEmpty(node.styles)) {
+        styles[getClassName(node)] = { ...node.styles };
       }
-      process(element.children);
+      process(node.children);
     });
   };
-  process(elements);
+  process(nodes);
 
   debug('styles %o', styles);
 
-  return { elements, useStyles: createUseStyles(styles) };
+  return { nodes, useStyles: createUseStyles(styles) };
 }
 
 
-function createElements(elements, styles) {
-  if (!Array.isArray(elements)) {
-    return elements;
-  }
+function createNodes(nodes, styles) {
+  nodes = Array.isArray(nodes) ? nodes : [nodes];
 
-  return elements.map(element => {
-    if (!isElement(element)) {
-      return element;
+  return nodes.map(node => {
+    if (node.type === 'text') {
+      return node.body;
     }
 
-    const props = {
-      key: element.id,
-      className: styles[getClassName(element)]
-    };
+    if (node.type === 'element') {
+      return createElementNode(node, styles);
+    }
 
-    const children = createElements(element.children, styles);
-    return React.createElement(element.type, props, children);
+    throw new Error(`invalid node type ${node.type}`);
   });
 }
 
 
+function createElementNode(node, styles) {
+  const props = {
+    key: node.id,
+    className: styles[getClassName(node)]
+  };
+  const children = createNodes(node.children, styles);
+  return React.createElement(node.tag, props, children);
+}
+
 function getClassName(element) {
-  return element.name || `${element.type}-${element.id}`;
-}
-
-function isElement(obj) {
-  return obj && typeof obj.type === 'string';
-}
-
-function isEmpty(obj) {
-  return !obj || Object.keys(obj).length === 0;
+  return element.name || `${element.tag}-${element.id}`;
 }

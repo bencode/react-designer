@@ -1,3 +1,13 @@
+let guid = 1;
+
+
+const div = tagFor('div');
+const span = tagFor('span');
+// const img = tagFor('img');
+const ul = tagFor('ul');
+const li = tagFor('li');
+
+
 export default {
   name: 'page',
 
@@ -8,10 +18,8 @@ export default {
   effects: {
     * mount(action, { put }) {
       const widget = {
-        elements: [
-          {
-            id: 1,
-            type: 'div',
+        nodes: [
+          div({
             styles: {
               display: 'flex',
               width: '100px',
@@ -20,70 +28,78 @@ export default {
               background: '#dedede'
             },
             children: [
-              {
-                id: 2,
-                type: 'span',
+              text('Hello'),
+              text('React')
+            ]
+          }),
+
+          div({
+            styles: {},
+            children: [
+              span({
                 styles: {
                   fontSize: '14px',
                   lineHeight: '1.4'
                 },
-                children: 'Hello'
-              },
-              {
-                id: 3,
-                type: 'span',
+                children: text('Hello')
+              }),
+
+              span({
                 styles: {
                   fontSize: '18px',
                   color: '#f00'
                 },
-                children: 'World'
-              }
+                children: text('World')
+              })
             ]
-          },
-          'PageViver',
-          {
-            id: 4,
-            type: 'ul',
+          }),
+
+          text('PageViver'),
+
+          ul({
             children: [
-              {
-                id: 5,
-                type: 'li',
-                children: 'React'
-              },
-              {
-                id: 6,
-                type: 'li',
-                children: 'Online'
-              },
-              {
-                id: 7,
-                type: 'li',
+              li({
+                children: text('React')
+              }),
+
+              li({
+                children: text('Online')
+              }),
+
+              li({
                 styles: {
                   border: '1px dashed #0ff',
                   width: '100px',
                   fontSize: '24px'
                 },
-                children: 'Editor'
-              },
-              {
-                id: 8,
-                type: 'li',
+                children: text('Editor')
+              }),
+
+              li({
                 styles: {
                   color: '#00f'
                 },
-                children: 'Visual'
-              },
-              {
-                id: 9,
-                type: 'li',
-                children: 'Weaver'
-              }
+                children: text('Visual')
+              }),
+
+              li({
+                children: text('Weaver')
+              })
             ]
-          }
+          })
         ]
       };
       yield put({ type: 'save', widget });
     }
   }
 };
+
+
+function text(body) {
+  return { id: guid++, type: 'text', body };
+}
+
+function tagFor(tag) {
+  return props => ({ id: guid++, type: 'element', tag, ...props });
+}
 
