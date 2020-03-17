@@ -27,8 +27,11 @@ const List = ({ nodes }) => {
     <ul>
       {
         nodes.map(node => (
-          <li key={node.id}>
+          <li key={node.id} className={`type-${node.type}`}>
             <div className="title">{getNodeTitle(node)}</div>
+            { hasChildren(node) &&
+              <List nodes={node.children} />
+            }
           </li>
         ))
       }
@@ -52,3 +55,7 @@ function getNodeTitle(node) {
   throw new Error('assert false');
 }
 
+
+function hasChildren(node) {
+  return node.type === 'element' && node.children && node.children.length > 0;
+}
