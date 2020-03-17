@@ -1,5 +1,4 @@
 import React from 'react';
-import $t from 'prop-types';
 import Outline from './Outline';
 import Simulator from './Simulator';
 import style from './style.less';
