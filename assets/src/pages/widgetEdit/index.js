@@ -3,11 +3,8 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { createStoreEnhancer } from '@hyder/component';
-import { Workbench } from '@/workbench';
 import pageModel from './models/page';
-import EditPart from './EditPart';
-import Footer from './Footer';
-import style from './style.less';
+import Page from './Page';
 
 
 const hyderEnhancer = createStoreEnhancer();
@@ -20,18 +17,9 @@ hyderEnhancer.add([
 
 
 const App = () => {
-  const parts = [
-    {
-      region: 'main',
-      component: () => <EditPart />
-    }
-  ];
   return (
     <Provider store={store}>
-      <div className={style.app}>
-        <Workbench className={style.workbench} parts={parts} />
-        <Footer />
-      </div>
+      <Page />
     </Provider>
   );
 };
