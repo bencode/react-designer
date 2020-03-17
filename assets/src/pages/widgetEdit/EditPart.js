@@ -1,19 +1,21 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import Outline from './Outline';
 import Simulator from './Simulator';
 import style from './style.less';
 
 const EditPart = () => {
+  const { widget } = useSelector(v => v.page);
+  if (!widget) {
+    return null;
+  }
+
   return (
     <div className={style.editPart}>
-      <Outline />
-      <Simulator />
+      <Outline widget={widget} />
+      <Simulator widget={widget} />
     </div>
   );
-};
-
-EditPart.propTypes = {
-
 };
 
 export default EditPart;

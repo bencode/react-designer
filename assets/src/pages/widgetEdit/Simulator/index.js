@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import $t from 'prop-types';
 import cx from 'classnames';
-import { useSelector, useDispatch } from 'react-redux';
 import { createUseStyles } from 'react-jss';
 import createDebug from 'debug';
 import style from './style.less';
@@ -10,42 +9,27 @@ import style from './style.less';
 const debug = createDebug('pageviver:Simulator');
 
 
-const Simulator = () => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch({ type: 'page/mount' });
-  }, []);
-
-  const { widget } = useSelector(state => state.page);
+const Simulator = ({ widget }) => {
+  const { elements, useStyles } = processWidget(widget);
+  const styles = useStyles();
 
   return (
     <div className={cx(style.simulator, 'viver-iphonex')}>
       <div className={cx(style.container)}>
-        { widget && <Widget widget={widget} /> }
+        {createElements(elements, styles)}
       </div>
     </div>
   );
 };
 
 Simulator.propTypes = {
-
-};
-
-export default Simulator;
-
-
-const Widget = ({ widget }) => {
-  const { elements, useStyles } = processWidget(widget);
-  const styles = useStyles();
-  return createElements(elements, styles);
-};
-
-Widget.propTypes = {
   widget: $t.shape({
     elements: $t.array
   }).isRequired
 };
+
+
+export default Simulator;
 
 
 function processWidget({ elements }) {
