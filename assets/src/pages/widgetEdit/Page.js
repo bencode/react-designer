@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Workbench } from '@/workbench';
+import Library from './Library';
 import EditPart from './EditPart';
 import Footer from './Footer';
 import style from './style.less';
@@ -13,6 +14,10 @@ const Page = () => {
   }, []);
 
   const parts = [
+    {
+      region: 'left',
+      component: () => <Library />
+    },
     {
       region: 'main',
       component: () => <EditPart />

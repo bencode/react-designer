@@ -22,6 +22,8 @@ const DefaultLayout = ({ parts }) => {
   const mainParts = parts.filter(regionEq('main'));
   const rightParts = parts.filter(regionEq('right'));
 
+  console.log(leftParts);
+
   return (
     <div className={style.layout}>
       <header className={style.header}></header>
