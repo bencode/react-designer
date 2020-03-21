@@ -1,6 +1,5 @@
 let guid = 1;
 
-
 const div = tagFor('div');
 const span = tagFor('span');
 // const img = tagFor('img');

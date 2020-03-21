@@ -2139,10 +2139,10 @@ batch@0.6.1:
   resolved "https://registry.npm.taobao.org/batch/download/batch-0.6.1.tgz#dc34314f4e679318093fc760272525f94bf25c16"
   integrity sha1-3DQxT05nkxgJP8dgJyUl+UvyXBY=
 
-bcd-react-webpack@^11.0.0-beta.1:
-  version "11.0.0-beta.1"
-  resolved "https://registry.npm.taobao.org/bcd-react-webpack/download/bcd-react-webpack-11.0.0-beta.1.tgz#948e7f7984c7fb9054e972436c702b84a9e2e6f4"
-  integrity sha1-lI5/eYTH+5BU6XJDbHArhKni5vQ=
+bcd-react-webpack@^11.0.0-beta.2:
+  version "11.0.0-beta.2"
+  resolved "https://registry.npm.taobao.org/bcd-react-webpack/download/bcd-react-webpack-11.0.0-beta.2.tgz?cache=0&sync_timestamp=1584798798494&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fbcd-react-webpack%2Fdownload%2Fbcd-react-webpack-11.0.0-beta.2.tgz#a0d4d63e73720576828236fe4acedd01836b5501"
+  integrity sha1-oNTWPnNyBXaCgjb+Ss7dAYNrVQE=
   dependencies:
     "@babel/core" "^7.1.6"
     "@babel/plugin-syntax-dynamic-import" "^7.0.0"
