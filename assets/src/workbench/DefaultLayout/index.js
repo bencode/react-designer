@@ -5,13 +5,11 @@ import { DraggableCore } from 'react-draggable';
 import pref from '@/workbench/utils/pref';
 import style from './style.less';
 
-type Range = [number, number];
-
 
 const regionEq = propEq('region');
 
 const DefaultLayout = ({ parts }) => {
-  const leftSize: Range = [100, 800];
+  const leftSize = [100, 800];
   const [width, setWidth] = useState(pref.get('leftWidth', 260));
   const handleDrag = e => {
     const next = e.pageX + 2;
@@ -68,6 +66,6 @@ Parts.propTypes = {
 };
 
 
-function inrange([min, max]: Range, now: number) {
+function inrange([min, max], now) {
   return min <= now && now <= max;
 }
