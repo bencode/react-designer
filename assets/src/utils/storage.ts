@@ -1,4 +1,4 @@
-function get(name) {
+function get(name: string) {
   const v = window.localStorage.getItem(name);
   try {
     return v ? JSON.parse(v) : null;
@@ -8,11 +8,11 @@ function get(name) {
   }
 }
 
-function set(name, value) {
+function set(name: string, value: any) {
   window.localStorage.setItem(name, JSON.stringify(value));
 }
 
-function remove(name) {
+function remove(name: string) {
   window.localStorage.removeItem(name);
 }
 

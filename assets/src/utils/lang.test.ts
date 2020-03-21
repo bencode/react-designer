@@ -10,13 +10,13 @@ test('sleep', async() => {
 
 
 test('isPlainObject', () => {
-  isPlainObject({}).toBe(true);
-  isPlainObject([]).toBe(false);
+  expect(isPlainObject({})).toBe(true);
+  expect(isPlainObject([])).toBe(false);
 });
 
 
 test('isEmpty', () => {
-  expect(false).toBe(true);
+  expect(isEmpty(false)).toBe(true);
 
   expect(isEmpty('')).toBe(true);
   expect(isEmpty(' ')).toBe(false);

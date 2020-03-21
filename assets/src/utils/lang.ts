@@ -1,12 +1,12 @@
-export function sleep(timeout) {
+export function sleep(timeout: number) {
   return new Promise(resolve => setTimeout(resolve, timeout));
 }
 
-export function isPlainObject(obj) {
+export function isPlainObject(obj: any) {
   return Object.prototype.toString.call(obj) === '[object Object]';
 }
 
-export function isEmpty(obj) {
+export function isEmpty(obj: any) {
   if (!obj) {
     return true;
   }
