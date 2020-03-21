@@ -2,9 +2,9 @@
   "name": "pageviver",
   "version": "0.1.0",
   "scripts": {
-    "lint": "eslint src",
+    "lint": "eslint src/**/*.{js,ts,tsx}",
     "stylelint": "stylelint **/*.less",
-    "start": "webpack --watch --progress --hot",
+    "start": "webpack --watch --color --hot",
     "clean": "rm -rf ../priv/static/*.*",
     "build": "npm run clean && NODE_ENV=production webpack",
     "upload": "oss-upload ../priv/static -o / -c oss.secret.js",

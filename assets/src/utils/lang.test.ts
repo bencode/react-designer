@@ -41,7 +41,7 @@ test('isNil', () => {
 
 
 test('or', () => {
-  const def = {}
+  const def = {};
   expect(or(null, def)).toBe(def);
   expect(or(undefined, def)).toBe(def);
   expect(or(false, def)).toBe(false);
