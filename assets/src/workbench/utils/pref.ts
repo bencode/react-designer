@@ -1,15 +1,14 @@
 import storage from '@/utils/storage';
-import { isNil } from '@/utils/lang';
+import { or } from '@/utils/lang';
 
 const key = 'workbench-preference';
 
-function get(name, def) {
-  const cache = storage.get(key);
-  return (cache || {})[name] || def;
-  return storage.get(key)?.[name] ?? def;
+function get(name: string, def: any) {
+  const cache = storage.get(key) || {};
+  return or(cache[name], def);
 }
 
-function set(name, value) {
+function set(name: string, value: any) {
   const next = {
     ...storage.get(key),
     [name]: value
