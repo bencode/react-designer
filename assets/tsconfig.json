@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "target": "ES2020",
+    "jsx": "react"
+  }
+}
