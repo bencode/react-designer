@@ -1224,6 +1224,14 @@
     "@types/istanbul-lib-coverage" "*"
     "@types/istanbul-lib-report" "*"
 
+"@types/jest@^25.1.4":
+  version "25.1.4"
+  resolved "https://registry.npm.taobao.org/@types/jest/download/@types/jest-25.1.4.tgz?cache=0&sync_timestamp=1583546151369&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fjest%2Fdownload%2F%40types%2Fjest-25.1.4.tgz#9e9f1e59dda86d3fd56afce71d1ea1b331f6f760"
+  integrity sha1-np8eWd2obT/VavznHR6hszH292A=
+  dependencies:
+    jest-diff "^25.1.0"
+    pretty-format "^25.1.0"
+
 "@types/minimatch@*":
   version "3.0.3"
   resolved "https://registry.npm.taobao.org/@types/minimatch/download/@types/minimatch-3.0.3.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2F%40types%2Fminimatch%2Fdownload%2F%40types%2Fminimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
@@ -9400,10 +9408,10 @@ react-redux@^7.2.0:
     prop-types "^15.7.2"
     react-is "^16.9.0"
 
-react-test-mate@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npm.taobao.org/react-test-mate/download/react-test-mate-4.0.0.tgz?cache=0&sync_timestamp=1584800373116&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-test-mate%2Fdownload%2Freact-test-mate-4.0.0.tgz#d39ef4d4123913a74728bd21af7774b7c3e1e687"
-  integrity sha1-05701BI5E6dHKL0hr3d0t8Ph5oc=
+react-test-mate@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.npm.taobao.org/react-test-mate/download/react-test-mate-4.0.1.tgz?cache=0&sync_timestamp=1584801248278&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Freact-test-mate%2Fdownload%2Freact-test-mate-4.0.1.tgz#0ecfdfe423c2dd658b8323a38baeba2977c8ca87"
+  integrity sha1-Ds/f5CPC3WWLgyOji666KXfIyoc=
   dependencies:
     "@babel/core" "^7.0.0"
     "@babel/plugin-proposal-class-properties" "^7.0.0"
@@ -9411,6 +9419,7 @@ react-test-mate@^4.0.0:
     "@babel/preset-env" "^7.0.0"
     "@babel/preset-react" "^7.0.0"
     "@babel/preset-typescript" "^7.9.0"
+    "@types/jest" "^25.1.4"
     babel-jest "^25.0.0"
     babel-plugin-module-resolver "^4.0.0"
     enzyme "^3.6.0"

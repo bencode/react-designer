@@ -18,3 +18,11 @@ export function isEmpty(obj: any) {
   }
   return false;
 }
+
+export function isNil(value: any) {
+  return value === undefined || value === null;
+}
+
+export function or(value, def) {
+  return isNil(value) ? def : value;
+}

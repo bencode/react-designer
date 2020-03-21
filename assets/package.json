@@ -35,7 +35,7 @@
     "bcd-react-webpack": "^11.0.0-beta.2",
     "eslint": "^7.0.0-alpha.2",
     "eslint-config-bcd-react": "^3.0.0",
-    "react-test-mate": "^4.0.0",
+    "react-test-mate": "^4.0.1",
     "stylelint": "^13.2.0",
     "stylelint-config-bcd": "^1.0.0",
     "webpack": "^4.42.0",

@@ -17,3 +17,4 @@ function remove(name: string) {
 }
 
 export default { get, set, remove };
+
