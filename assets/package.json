@@ -4,7 +4,7 @@
   "scripts": {
     "lint": "eslint src",
     "stylelint": "stylelint **/*.less",
-    "start": "webpack --watch --progress --color",
+    "start": "webpack --watch --progress --hot",
     "clean": "rm -rf ../priv/static/*.*",
     "build": "npm run clean && NODE_ENV=production webpack",
     "upload": "oss-upload ../priv/static -o / -c oss.secret.js",
