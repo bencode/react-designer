@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import $t from 'prop-types';
+import IconButton from '@/components/IconButton';
 import * as types from '../types';
+import DownIcon from './img/down.svg';
+import RightIcon from './img/right.svg';
 import style from './style.less';
 
 
@@ -24,12 +27,18 @@ export default Outline;
 
 
 const List = ({ nodes }) => {
+  const [collapsed, setCollapsed] = useState(false);
   return (
-    <ul>
+    <ul className="list">
       {
         nodes.map(node => (
-          <li key={node.id} className={`type-${node.type}`}>
-            <div className="title">{getNodeTitle(node)}</div>
+          <li key={node.id} className={`item type-${node.type}`}>
+            <div className="header">
+              <IconButton
+                icon={collapsed ? <RightIcon /> : <DownIcon />}
+                onClick={() => setCollapsed(!collapsed)} />
+              {getNodeTitle(node)}
+            </div>
             { hasChildren(node) &&
               <List nodes={node.children} />
             }
