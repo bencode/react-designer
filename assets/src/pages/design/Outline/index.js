@@ -1,7 +1,8 @@
 import React from 'react';
 import $t from 'prop-types';
-import * as $type from '../type';
+import * as types from '../types';
 import style from './style.less';
+
 
 const Outline = ({ widget }) => {
   return (
@@ -14,7 +15,7 @@ const Outline = ({ widget }) => {
 
 Outline.propTypes = {
   widget: $t.shape({
-    nodes: $t.arrayOf($type.Node)
+    nodes: $t.arrayOf(types.Node)
   })
 };
 

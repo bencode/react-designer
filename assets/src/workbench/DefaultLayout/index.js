@@ -51,6 +51,7 @@ DefaultLayout.propTypes = {
 
 export default DefaultLayout;
 
+
 const Parts = ({ parts }) => (
   <>
   {

@@ -1,6 +1,7 @@
 import React from 'react';
 import style from './style.less';
 
+
 const Library = () => {
   return (
     <div className={style.library}>
@@ -17,7 +18,6 @@ const Library = () => {
 };
 
 Library.propTypes = {
-
 };
 
 export default Library;

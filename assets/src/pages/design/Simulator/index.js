@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import $t from 'prop-types';
 import cx from 'classnames';
 import { createUseStyles } from 'react-jss';
 import createDebug from 'debug';
 import { isEmpty } from '@/utils/lang';
-import * as $type from '../type';
+import * as types from '../types';
 import style from './style.less';
 
 
@@ -26,7 +26,7 @@ const Simulator = ({ widget }) => {
 
 Simulator.propTypes = {
   widget: $t.shape({
-    nodes: $t.arrayOf($type.Node).isRequired
+    nodes: $t.arrayOf(types.Node).isRequired
   }).isRequired
 };
 
