@@ -16,8 +16,8 @@ export default {
 
   effects: {
     * mount(action, { put }) {
-      const widget = {
-        nodes: [
+      const widget = div({
+        children: [
           div({
             styles: {
               display: 'flex',
@@ -94,8 +94,11 @@ export default {
               })
             ]
           })
+          // ul
         ]
-      };
+      });
+      // widget
+
       yield put({ type: 'save', widget });
     }
   }

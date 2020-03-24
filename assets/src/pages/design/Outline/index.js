@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import $t from 'prop-types';
 import IconButton from '@/components/IconButton';
 import * as types from '../types';
 import DownIcon from './img/down.svg';
@@ -10,48 +9,45 @@ import style from './style.less';
 const Outline = ({ widget }) => {
   return (
     <div className={style.outline}>
-      <List nodes={widget.nodes} />
+      <Node node={widget} />
     </div>
   );
 };
 
 
 Outline.propTypes = {
-  widget: $t.shape({
-    nodes: $t.arrayOf(types.Node)
-  })
+  widget: types.Node.isRequired
 };
 
 
 export default Outline;
 
 
-const List = ({ nodes }) => {
+const Node = ({ node }) => {
   const [collapsed, setCollapsed] = useState(false);
   return (
-    <ul className="list">
-      {
-        nodes.map(node => (
-          <li key={node.id} className={`item type-${node.type}`}>
-            <div className="header">
-              <IconButton
-                icon={collapsed ? <RightIcon /> : <DownIcon />}
-                onClick={() => setCollapsed(!collapsed)} />
-              {getNodeTitle(node)}
-            </div>
-            { hasChildren(node) &&
-              <List nodes={node.children} />
-            }
-          </li>
-        ))
+    <div className="node">
+      <div className="header">
+        <IconButton
+          icon={collapsed ? <RightIcon /> : <DownIcon />}
+          onClick={() => setCollapsed(!collapsed)} />
+        {getNodeTitle(node)}
+      </div>
+      { hasChildren(node) &&
+        <ul className="children">
+        {
+          node.children.map(child => (
+            <li key={child.id}><Node node={child} /></li>
+          ))
+        }
+        </ul>
       }
-    </ul>
+    </div>
   );
 };
 
-
-List.propTypes = {
-  nodes: $t.array.isRequired
+Node.propTypes = {
+  node: types.Node.isRequired
 };
 
 

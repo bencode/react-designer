@@ -1,5 +1,4 @@
 import * as React from 'react';
-import $t from 'prop-types';
 import cx from 'classnames';
 import { createUseStyles } from 'react-jss';
 import createDebug from 'debug';
@@ -9,7 +8,6 @@ import style from './style.less';
 
 
 const debug = createDebug('pageviver:Simulator');
-
 
 const Simulator = ({ widget }) => {
   const { nodes, useStyles } = processWidget(widget);
@@ -25,15 +23,13 @@ const Simulator = ({ widget }) => {
 };
 
 Simulator.propTypes = {
-  widget: $t.shape({
-    nodes: $t.arrayOf(types.Node).isRequired
-  }).isRequired
+  widget: types.Node.isRequired
 };
 
 export default Simulator;
 
 
-function processWidget({ nodes }) {
+function processWidget(widget) {
   const styles = {};
 
   const process = children => {
@@ -50,11 +46,12 @@ function processWidget({ nodes }) {
       process(node.children);
     });
   };
-  process(nodes);
+
+  process(widget.children);
 
   debug('styles %o', styles);
 
-  return { nodes, useStyles: createUseStyles(styles) };
+  return { nodes: [widget], useStyles: createUseStyles(styles) };
 }
 
 
