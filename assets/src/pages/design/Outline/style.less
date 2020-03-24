@@ -1,6 +1,6 @@
 :local(.outline) {
   min-width: 200px;
-  padding: 20px 20px 20px 30px;
+  padding: 20px;
   font-size: 14px;
   user-select: none;
   line-height: 1.4;
@@ -10,34 +10,36 @@
     margin: 0;
     list-style: none;
   }
+}
+//~ outline
 
-  .node {
-    .header {
-      display: flex;
-      align-items: center;
-    }
-
-    .collapse-btn {
-      position: absolute;
-      margin-left: -20px;
+:local(.node) {
+  .header {
+    display: flex;
+    align-items: center;
+  }
+  .icon {
+    display: flex;
+    width: 20px;
+    .vx-icon-button {
       svg {
         width: 0.8em;
         height: 0.8em;
       }
     }
+  }
 
-    .children {
-      &.collapsed {
-        display: none;
+  .children {
+    &.collapsed {
+      display: none;
+    }
+  }
+  each(range(10), {
+    &.indent-@{value} {
+      .spacer {
+        padding-left: @value*16px;
       }
     }
-
-    each(range(10), {
-      &.indent-@{value} {
-        .header {
-          padding-left: @value*16px;
-        }
-      }
-    });
-  }
+  });
 }
+//~ node

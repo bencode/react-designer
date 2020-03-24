@@ -29,14 +29,16 @@ const Node = ({ indent, node }) => {
   const [collapsed, setCollapsed] = useState(false);
   const has = hasChildren(node) && !isTextElement(node);
   return (
-    <div className={`node type-${node.type} indent-${indent}`}>
+    <div className={`${style.node} type-${node.type} indent-${indent}`}>
       <div className="header">
-        {has &&
-          <IconButton
-            className="collapse-btn"
-            icon={collapsed ? <RightIcon /> : <DownIcon />}
-            onClick={() => setCollapsed(!collapsed)} />
-        }
+        <div className="spacer"></div>
+        <div className="icon">
+          {has &&
+            <IconButton
+              icon={collapsed ? <RightIcon /> : <DownIcon />}
+              onClick={() => setCollapsed(!collapsed)} />
+          }
+        </div>
         {getNodeTitle(node)}
       </div>
       { has &&
