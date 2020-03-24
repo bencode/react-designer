@@ -1,11 +1,11 @@
 import React from 'react';
 import cx from 'classnames';
 import $t from 'prop-types';
-import style from './style.less';
+import './style.less'
 
 const IconButton = ({ icon, className, ...props }) => {
   return (
-    <button type="button" className={cx(style.iconButton, className)} {...props}>
+    <button type="button" className={cx('vx-icon-button', className)} {...props}>
       {icon}
     </button>
   );
