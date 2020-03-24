@@ -10,20 +10,21 @@ import style from './style.less';
 
 const debug = createDebug('pageviver:Simulator');
 
-const Simulator = ({ widget, edit }) => {
+const Simulator = ({ dispatch, widget, edit }) => {
   const { nodes, useStyles } = processWidget(widget);
   const styles = useStyles();
 
   return (
     <div className={cx(style.simulator, 'viver-iphonex')}>
       <div className={cx(style.container)}>
-        {createNodes(nodes, { styles, edit })}
+        {createNodes(nodes, { dispatch, styles, edit })}
       </div>
     </div>
   );
 };
 
 Simulator.propTypes = {
+  dispatch: $t.func.isRequired,
   widget: types.Node.isRequired,
   edit: $t.shape({
     hover: $t.number
@@ -83,7 +84,6 @@ function createTextNode(node, opts) {
   );
 }
 
-
 function createElementNode(node, opts) {
   const props = createProps(node, opts);
   const children = createNodes(node.children, opts);
@@ -91,9 +91,12 @@ function createElementNode(node, opts) {
 }
 
 function createProps(node, opts) {
+  const hover = id => opts.dispatch({ type: 'page/hover', target: 'outline', id });
   return {
     key: node.id,
-    className: createClassNames(node, opts)
+    className: createClassNames(node, opts),
+    onMouseEnter: () => hover(node.id),
+    onMouseLeave: () => hover(null)
   };
 }
 

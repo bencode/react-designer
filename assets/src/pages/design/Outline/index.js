@@ -8,10 +8,10 @@ import RightIcon from './img/right.svg';
 import style from './style.less';
 
 
-const Outline = ({ dispatch, widget }) => {
+const Outline = ({ dispatch, widget, edit }) => {
   return (
     <div className={style.outline}>
-      <Node dispatch={dispatch} indent={0} node={widget} />
+      <Node dispatch={dispatch} edit={edit} indent={0} node={widget} />
     </div>
   );
 };
@@ -19,14 +19,17 @@ const Outline = ({ dispatch, widget }) => {
 
 Outline.propTypes = {
   dispatch: $t.func.isRequired,
-  widget: types.Node.isRequired
+  widget: types.Node.isRequired,
+  edit: $t.shape({
+    outlineHover: $t.number
+  })
 };
 
 
 export default Outline;
 
 
-const Node = ({ dispatch, indent, node }) => {
+const Node = ({ dispatch, edit, indent, node }) => {
   const [collapsed, setCollapsed] = useState(false);
   const has = hasChildren(node) && !isTextElement(node);
   const handleHover = id => () => {
@@ -34,7 +37,8 @@ const Node = ({ dispatch, indent, node }) => {
   };
   return (
     <div className={`${style.node} type-${node.type} indent-${indent}`}>
-      <div className="header" onMouseEnter={handleHover(node.id)} onMouseLeave={handleHover(null)}>
+      <div className={cx('header', hoverClassName(node, edit))}
+          onMouseEnter={handleHover(node.id)} onMouseLeave={handleHover(null)}>
         <div className="spacer"></div>
         <div className="icon">
           {has &&
@@ -44,14 +48,19 @@ const Node = ({ dispatch, indent, node }) => {
           }
         </div>
         <div className="title">
-          {getNodeTitle(node)}
+          {node.type === 'text' ? node.body :
+            isTextElement(node) ? renderTextElement(node, edit) :
+              node.type === 'element' ? `<${node.tag}>` : null
+          }
         </div>
       </div>
       { has &&
         <ul className={cx('children', { collapsed })}>
         {
           node.children.map(child => (
-            <li key={child.id}><Node dispatch={dispatch} indent={indent + 1} node={child} /></li>
+            <li key={child.id}>
+              <Node dispatch={dispatch} edit={edit} indent={indent + 1} node={child} />
+            </li>
           ))
         }
         </ul>
@@ -62,22 +71,22 @@ const Node = ({ dispatch, indent, node }) => {
 
 Node.propTypes = {
   dispatch: $t.func.isRequired,
+  edit: $t.object.isRequired,
   indent: $t.number.isRequired,
   node: types.Node.isRequired
 };
 
 
-function getNodeTitle(node) {
-  if (node.type === 'text') {
-    return node.body;
-  }
-  if (isTextElement(node)) {
-    return `<${node.tag}> ${node.children[0].body}`;
-  }
-  if (node.type === 'element') {
-    return `<${node.tag}>`;
-  }
-  throw new Error('assert false');
+function renderTextElement(node, edit) {
+  const child = node.children[0];
+  return (
+    <span>
+      {`<${node.tag}>`}
+      <span className={hoverClassName(child, edit)}>
+        {child.body}
+      </span>
+    </span>
+  );
 }
 
 function hasChildren(node) {
@@ -86,4 +95,8 @@ function hasChildren(node) {
 
 function isTextElement(node) {
   return hasChildren(node) && node.children.length === 1 && node.children[0].type === 'text';
+}
+
+function hoverClassName(node, edit) {
+  return node.id === edit.outlineHover ? 'vx-hover' : null;
 }
