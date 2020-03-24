@@ -25,15 +25,20 @@ export default Outline;
 
 const Node = ({ node }) => {
   const [collapsed, setCollapsed] = useState(false);
+  const has = hasChildren(node);
   return (
-    <div className="node">
+    <div className={`node type-${node.type}`}>
       <div className="header">
-        <IconButton
-          icon={collapsed ? <RightIcon /> : <DownIcon />}
-          onClick={() => setCollapsed(!collapsed)} />
+        <div className="intent">
+        {has &&
+          <IconButton
+            icon={collapsed ? <RightIcon /> : <DownIcon />}
+            onClick={() => setCollapsed(!collapsed)} />
+        }
+        </div>
         {getNodeTitle(node)}
       </div>
-      { hasChildren(node) &&
+      { has && !collapsed &&
         <ul className="children">
         {
           node.children.map(child => (
@@ -53,7 +58,7 @@ Node.propTypes = {
 
 function getNodeTitle(node) {
   if (node.type === 'element') {
-    return `${node.tag}_${node.id}`;
+    return `<${node.tag}>`;
   }
   if (node.type === 'text') {
     return node.body;

@@ -40,7 +40,7 @@ export default {
                   fontSize: '14px',
                   lineHeight: '1.4'
                 },
-                children: text('Hello')
+                children: [text('Hello')]
               }),
 
               span({
@@ -48,7 +48,7 @@ export default {
                   fontSize: '18px',
                   color: '#f00'
                 },
-                children: text('World')
+                children: [text('World')]
               })
             ]
           }),
@@ -70,7 +70,7 @@ export default {
               }),
 
               li({
-                children: text('Online')
+                children: [text('Online')]
               }),
 
               li({
@@ -79,18 +79,18 @@ export default {
                   width: '100px',
                   fontSize: '24px'
                 },
-                children: text('Editor')
+                children: [text('Editor')]
               }),
 
               li({
                 styles: {
                   color: '#00f'
                 },
-                children: text('Visual')
+                children: [text('Visual')]
               }),
 
               li({
-                children: text('Weaver')
+                children: [text('Weaver')]
               })
             ]
           })

@@ -1,17 +1,29 @@
 :local(.outline) {
+  min-width: 200px;
+  padding: 20px;
+  font-size: 14px;
+  user-select: none;
 
-  .list {
+  ul {
     padding: 0;
     margin: 0;
     list-style: none;
+  }
 
-    >.item >.list {
-      margin-left: 20px;
-    }
-
+  .node {
     .header {
       display: flex;
       align-items: center;
+    }
+
+    .intent {
+      width: 22px;
+    }
+
+    .children {
+      li {
+        padding-left: 20px;
+      }
     }
   }
 }
