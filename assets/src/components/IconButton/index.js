@@ -1,7 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import $t from 'prop-types';
-import './style.less'
+import './style.less';
 
 const IconButton = ({ icon, className, ...props }) => {
   return (
