@@ -1,16 +1,18 @@
 :local(.simulator) {
+  display: flex;
   box-sizing: content-box;
   width: 375px;
+  height: 667px;
   margin: 20px auto;
   border: 10px solid #f2f2f2;
+
+  &.viver-iphonex {
+    height: 812px;
+  }
 }
 
 :local(.container) {
-  height: 667px;
+  flex: 1;
   overflow: auto;
-  border: 1px solid #d0d0d0;
-
-  .viver-iphonex & {
-    height: 812px;
-  }
+  outline: 1px solid #d0d0d0;
 }

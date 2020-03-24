@@ -1,9 +1,10 @@
 :local(.outline) {
   min-width: 200px;
-  padding: 20px;
+  padding: 20px 4px;
   font-size: 14px;
   user-select: none;
   line-height: 1.4;
+  border-right: 1px solid #d0d0d0;
 
   ul {
     padding: 0;
@@ -17,7 +18,16 @@
   .header {
     display: flex;
     align-items: center;
+    padding: 0 4px;
+    &:hover {
+      color: #fff;
+      background: hsl(217, 71%,  53%);
+      .vx-icon-button svg {
+        fill: #fff;
+      }
+    }
   }
+
   .icon {
     display: flex;
     width: 20px;
@@ -34,6 +44,7 @@
       display: none;
     }
   }
+
   each(range(10), {
     &.indent-@{value} {
       .spacer {
