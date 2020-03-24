@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import cx from 'classnames';
+import $t from 'prop-types';
 import IconButton from '@/components/IconButton';
 import * as types from '../types';
 import DownIcon from './img/down.svg';
@@ -9,7 +11,7 @@ import style from './style.less';
 const Outline = ({ widget }) => {
   return (
     <div className={style.outline}>
-      <Node node={widget} />
+      <Node indent={0} node={widget} />
     </div>
   );
 };
@@ -23,26 +25,25 @@ Outline.propTypes = {
 export default Outline;
 
 
-const Node = ({ node }) => {
+const Node = ({ indent, node }) => {
   const [collapsed, setCollapsed] = useState(false);
   const has = hasChildren(node) && !isTextElement(node);
   return (
-    <div className={`node type-${node.type}`}>
+    <div className={`node type-${node.type} indent-${indent}`}>
       <div className="header">
-        <div className="intent">
         {has &&
           <IconButton
+            className="collapse-btn"
             icon={collapsed ? <RightIcon /> : <DownIcon />}
             onClick={() => setCollapsed(!collapsed)} />
         }
-        </div>
         {getNodeTitle(node)}
       </div>
-      { has && !collapsed &&
-        <ul className="children">
+      { has &&
+        <ul className={cx('children', { collapsed })}>
         {
           node.children.map(child => (
-            <li key={child.id}><Node node={child} /></li>
+            <li key={child.id}><Node indent={indent + 1} node={child} /></li>
           ))
         }
         </ul>
@@ -52,6 +53,7 @@ const Node = ({ node }) => {
 };
 
 Node.propTypes = {
+  indent: $t.number.isRequired,
   node: types.Node.isRequired
 };
 

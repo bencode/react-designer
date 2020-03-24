@@ -7097,6 +7097,11 @@ ko-sleep@^1.0.3:
   dependencies:
     ms "^2.0.0"
 
+lamda@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.npm.taobao.org/lamda/download/lamda-0.4.1.tgz#68e11a866e835dd5b3bdbcd7642c23a467ddd89a"
+  integrity sha1-aOEahm6DXdWzvbzXZCwjpGfd2Jo=
+
 last-call-webpack-plugin@^3.0.0:
   version "3.0.0"
   resolved "https://registry.npm.taobao.org/last-call-webpack-plugin/download/last-call-webpack-plugin-3.0.0.tgz#9742df0e10e3cf46e5c0381c2de90d3a7a2d7555"

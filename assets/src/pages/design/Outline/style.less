@@ -1,6 +1,6 @@
 :local(.outline) {
   min-width: 200px;
-  padding: 20px;
+  padding: 20px 20px 20px 30px;
   font-size: 14px;
   user-select: none;
   line-height: 1.2;
@@ -17,23 +17,27 @@
       align-items: center;
     }
 
-    .intent {
-      display: flex;
-      align-items: center;
-      width: 20px;
-
-      .vx-icon-button {
-        svg {
-          width: 0.8em;
-          height: 0.8em;
-        }
+    .collapse-btn {
+      position: absolute;
+      margin-left: -20px;
+      svg {
+        width: 0.8em;
+        height: 0.8em;
       }
     }
 
     .children {
-      li {
-        padding-left: 20px;
+      &.collapsed {
+        display: none;
       }
     }
+
+    each(range(10), {
+      &.indent-@{value} {
+        .header {
+          padding-left: @value*16px;
+        }
+      }
+    });
   }
 }
