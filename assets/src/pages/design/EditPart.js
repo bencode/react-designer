@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import createDebug from 'debug';
 import Outline from './Outline';
 import Simulator from './Simulator';
@@ -8,7 +8,8 @@ import style from './style.less';
 const debug = createDebug('pageviver:EditPart');
 
 const EditPart = () => {
-  const { widget } = useSelector(v => v.page);
+  const dispatch = useDispatch();
+  const { widget, edit } = useSelector(v => v.page);
   if (!widget) {
     return null;
   }
@@ -16,8 +17,8 @@ const EditPart = () => {
   debug('widget: %o', widget);
   return (
     <div className={style.editPart}>
-      <Outline widget={widget} />
-      <Simulator widget={widget} />
+      <Outline dispatch={dispatch} widget={widget} />
+      <Simulator widget={widget} edit={edit} />
     </div>
   );
 };

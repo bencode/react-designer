@@ -8,16 +8,17 @@ import RightIcon from './img/right.svg';
 import style from './style.less';
 
 
-const Outline = ({ widget }) => {
+const Outline = ({ dispatch, widget }) => {
   return (
     <div className={style.outline}>
-      <Node indent={0} node={widget} />
+      <Node dispatch={dispatch} indent={0} node={widget} />
     </div>
   );
 };
 
 
 Outline.propTypes = {
+  dispatch: $t.func.isRequired,
   widget: types.Node.isRequired
 };
 
@@ -25,12 +26,15 @@ Outline.propTypes = {
 export default Outline;
 
 
-const Node = ({ indent, node }) => {
+const Node = ({ dispatch, indent, node }) => {
   const [collapsed, setCollapsed] = useState(false);
   const has = hasChildren(node) && !isTextElement(node);
+  const handleHover = id => () => {
+    dispatch({ type: 'page/hover', id });
+  };
   return (
     <div className={`${style.node} type-${node.type} indent-${indent}`}>
-      <div className="header">
+      <div className="header" onMouseEnter={handleHover(node.id)} onMouseLeave={handleHover(null)}>
         <div className="spacer"></div>
         <div className="icon">
           {has &&
@@ -39,13 +43,15 @@ const Node = ({ indent, node }) => {
               onClick={() => setCollapsed(!collapsed)} />
           }
         </div>
-        {getNodeTitle(node)}
+        <div className="title">
+          {getNodeTitle(node)}
+        </div>
       </div>
       { has &&
         <ul className={cx('children', { collapsed })}>
         {
           node.children.map(child => (
-            <li key={child.id}><Node indent={indent + 1} node={child} /></li>
+            <li key={child.id}><Node dispatch={dispatch} indent={indent + 1} node={child} /></li>
           ))
         }
         </ul>
@@ -55,6 +61,7 @@ const Node = ({ indent, node }) => {
 };
 
 Node.propTypes = {
+  dispatch: $t.func.isRequired,
   indent: $t.number.isRequired,
   node: types.Node.isRequired
 };

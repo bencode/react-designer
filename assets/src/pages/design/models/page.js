@@ -1,3 +1,8 @@
+import createDebug from 'debug';
+
+const debug = createDebug('pageviver:model');
+
+
 let guid = 1;
 
 const div = tagFor('div');
@@ -11,7 +16,18 @@ export default {
   name: 'page',
 
   state: {
-    count: 0
+    widget: null,
+    edit: {
+      hover: null
+    }
+  },
+
+  reducers: {
+    hover(state, { id }) {
+      debug('hover %s', id);
+      const edit = { ...state.edit, hover: id };
+      return { ...state, edit };
+    }
   },
 
   effects: {
