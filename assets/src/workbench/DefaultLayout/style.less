@@ -21,16 +21,6 @@
   border-right: 1px solid #d0d0d0;
 }
 
-:local(.main) {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-
-  :local(.part) {
-    height: 100%;
-  }
-}
-
 :local(.right) {
   width: 300px;
   border-left: 1px solid #d0d0d0;
@@ -43,4 +33,14 @@
   bottom: 0;
   width: 5px;
   cursor: col-resize;
+}
+
+:local(.main) {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  :local(.part) {
+    height: 100%;
+  }
 }
