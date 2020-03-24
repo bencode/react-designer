@@ -25,7 +25,7 @@ export default Outline;
 
 const Node = ({ node }) => {
   const [collapsed, setCollapsed] = useState(false);
-  const has = hasChildren(node);
+  const has = hasChildren(node) && !isTextElement(node);
   return (
     <div className={`node type-${node.type}`}>
       <div className="header">
@@ -57,16 +57,22 @@ Node.propTypes = {
 
 
 function getNodeTitle(node) {
-  if (node.type === 'element') {
-    return `<${node.tag}>`;
-  }
   if (node.type === 'text') {
     return node.body;
+  }
+  if (isTextElement(node)) {
+    return `<${node.tag}> ${node.children[0].body}`;
+  }
+  if (node.type === 'element') {
+    return `<${node.tag}>`;
   }
   throw new Error('assert false');
 }
 
-
 function hasChildren(node) {
   return node.type === 'element' && node.children && node.children.length > 0;
+}
+
+function isTextElement(node) {
+  return hasChildren(node) && node.children.length === 1 && node.children[0].type === 'text';
 }
