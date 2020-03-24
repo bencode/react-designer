@@ -18,14 +18,16 @@ export default {
   state: {
     widget: null,
     edit: {
-      hover: null
+      simulatorHover: null,
+      outlineHover: null
     }
   },
 
   reducers: {
-    hover(state, { id }) {
+    hover(state, { target, id }) {
       debug('hover %s', id);
-      const edit = { ...state.edit, hover: id };
+      const field = `${target}Hover`;
+      const edit = { ...state.edit, [field]: id };
       return { ...state, edit };
     }
   },

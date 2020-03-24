@@ -15,10 +15,11 @@ const EditPart = () => {
   }
 
   debug('widget: %o', widget);
+  const props = { dispatch, widget, edit };
   return (
     <div className={style.editPart}>
-      <Outline dispatch={dispatch} widget={widget} />
-      <Simulator widget={widget} edit={edit} />
+      <Outline {...props} />
+      <Simulator {...props} />
     </div>
   );
 };

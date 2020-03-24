@@ -30,7 +30,7 @@ const Node = ({ dispatch, indent, node }) => {
   const [collapsed, setCollapsed] = useState(false);
   const has = hasChildren(node) && !isTextElement(node);
   const handleHover = id => () => {
-    dispatch({ type: 'page/hover', id });
+    dispatch({ type: 'page/hover', target: 'simulator', id });
   };
   return (
     <div className={`${style.node} type-${node.type} indent-${indent}`}>

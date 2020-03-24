@@ -64,7 +64,7 @@ function createNodes(nodes, opts) {
 
   return nodes.map(node => {
     if (node.type === 'text') {
-      return node.body;
+      return createTextNode(node, opts);
     }
 
     if (node.type === 'element') {
@@ -76,17 +76,31 @@ function createNodes(nodes, opts) {
 }
 
 
+function createTextNode(node, opts) {
+  const props = createProps(node, opts);
+  return (
+    <span {...props}>{node.body}</span>
+  );
+}
+
+
 function createElementNode(node, opts) {
-  const { styles, edit } = opts;
-  const props = {
-    key: node.id,
-    className: cx(
-      styles[getClassName(node)],
-      { 'vx-hover': edit.hover === node.id }
-    )
-  };
+  const props = createProps(node, opts);
   const children = createNodes(node.children, opts);
   return React.createElement(node.tag, props, children);
+}
+
+function createProps(node, opts) {
+  return {
+    key: node.id,
+    className: createClassNames(node, opts)
+  };
+}
+
+function createClassNames(node, { styles, edit }) {
+  const nodeClassName = node.type === 'element' ? styles[getClassName(node)] : null;
+  const hoverClassName = edit.simulatorHover === node.id ? 'vx-hover' : null;
+  return cx(nodeClassName, hoverClassName);
 }
 
 function getClassName(element) {
