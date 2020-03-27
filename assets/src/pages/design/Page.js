@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Workbench } from '@/workbench';
 import Library from './Library';
 import EditPart from './EditPart';
+import Form from './Form';
 import Footer from './Footer';
 import style from './style.less';
 
@@ -21,6 +22,10 @@ const Page = () => {
     {
       region: 'main',
       component: () => <EditPart />
+    },
+    {
+      region: 'right',
+      component: () => <Form />
     }
   ];
 

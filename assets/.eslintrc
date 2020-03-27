@@ -1,5 +1,5 @@
 {
-  extends: 'bcd-react',
+  extends: 'hyder',
   rules: {
    import/prefer-default-export: 0,
    react/display-name: 0,
