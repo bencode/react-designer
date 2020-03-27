@@ -35,7 +35,7 @@
     "ali-oss-upload-cli": "1.3.0",
     "bcd-react-webpack": "^11.0.1",
     "eslint": "^7.0.0-alpha.2",
-    "eslint-config-hyder": "^1.0.0",
+    "eslint-config-hyder": "^1.1.0",
     "react-test-mate": "^4.0.1",
     "stylelint": "^13.2.0",
     "stylelint-config-bcd": "^1.0.0",
