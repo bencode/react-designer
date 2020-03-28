@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Workbench } from '@/workbench';
+import TopBar from './TopBar';
 import Library from './Library';
 import EditPart from './EditPart';
 import Form from './Form';
@@ -14,6 +15,10 @@ const Page = () => {
   }, []);
 
   const parts = [
+    {
+      region: 'top',
+      component: () => <TopBar />
+    },
     {
       region: 'left',
       component: () => <Library />

@@ -19,13 +19,16 @@ const DefaultLayout = ({ parts }) => {
     }
   };
 
+  const topParts = parts.filter(regionEq('top'));
   const leftParts = parts.filter(regionEq('left'));
   const mainParts = parts.filter(regionEq('main'));
   const rightParts = parts.filter(regionEq('right'));
 
   return (
     <div className={style.layout}>
-      <header className={style.header}></header>
+      <header className={style.header}>
+        <Parts parts={topParts} />
+      </header>
       <main className={style.body}>
         <div className={style.left} style={{ width: `${width}px` }}>
           <Parts parts={leftParts} />
