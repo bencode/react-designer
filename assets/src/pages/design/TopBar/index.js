@@ -6,7 +6,8 @@ import style from './style.less';
 const TopBar = () => {
   return (
     <div className={style.topBar}>
-      TopBar
+      <div className="main part">
+      </div>
       <a className="github" href="https://github.com/lesscap/pageviver">
         <GithubIcon />
       </a>
