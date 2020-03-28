@@ -4,7 +4,6 @@ import { Workbench } from '@/workbench';
 import Library from './Library';
 import EditPart from './EditPart';
 import Form from './Form';
-import Footer from './Footer';
 import style from './style.less';
 
 
@@ -32,7 +31,6 @@ const Page = () => {
   return (
     <div className={style.page}>
       <Workbench className={style.workbench} parts={parts} />
-      <Footer />
     </div>
   );
 };

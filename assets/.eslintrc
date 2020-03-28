@@ -1,5 +1,6 @@
 {
   extends: 'hyder',
   rules: {
+    react/display-name: 0
   }
 }
