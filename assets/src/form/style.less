@@ -1,0 +1,35 @@
+.vx-select {
+  position: relative;
+  display: flex;
+  select {
+    background: #fff;
+    flex: 1;
+  }
+
+  .vx-close-icon {
+    position: absolute;
+    display: inline-flex;
+    top: 5px;
+    right: 5px;
+    color: #333;
+    background: #fff;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    .vx-close-icon {
+      opacity: 1;
+    }
+  }
+}
+
+.vx-input-number {
+  display: flex;
+  input {
+    flex: 1;
+    height: 25px;
+    line-height: 25px;
+  }
+}

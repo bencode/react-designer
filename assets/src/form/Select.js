@@ -1,6 +1,7 @@
 import React from 'react';
-import cx from 'classnames';
 import $t from 'prop-types';
+import cx from 'classnames';
+import CloseIcon from './components/CloseIcon';
 
 
 const Select = ({ className, options = [] }) => {
@@ -13,6 +14,7 @@ const Select = ({ className, options = [] }) => {
         ))
       }
       </select>
+      <CloseIcon />
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import $t from 'prop-types';
 import { Select, Number } from '@/form';
+import '@/form/style.less';
 import style from './style.less';
 
 

@@ -2,6 +2,7 @@ import React from 'react';
 import $t from 'prop-types';
 import cx from 'classnames';
 
+
 const Text = ({ className, ...props }) => {
   return (
     <div className={cx('vx-input', className)}>
