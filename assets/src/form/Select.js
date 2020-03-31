@@ -4,29 +4,47 @@ import cx from 'classnames';
 import CloseIcon from './components/CloseIcon';
 
 
-const Select = ({ className, options = [] }) => {
+const Select = ({
+  className,
+  options = [],
+  value,
+  onChange,
+  clearable
+}) => {
+  const selectedIndex = options.findIndex(option => option.value === value);
+
+  const handleChange = e => {
+    const index = e.target.selectedIndex;
+    const newValue = index >= 0 ? options[index].value : undefined;
+    onChange && onChange(newValue);
+  };
   return (
     <div className={cx('vx-select', className)}>
-      <select>
+      <select onChange={handleChange} value={selectedIndex}>
       {
         options.map(({ label }, index) => (
-          <option key={index}>{label}</option>
+          <option key={index} value={index}>{label}</option>
         ))
       }
       </select>
-      <CloseIcon />
+      { clearable && <CloseIcon /> }
     </div>
   );
 };
 
+const ValueType = $t.oneOfType([$t.string, $t.number]);
+
 const TypeOption = $t.shape({
   label: $t.string,
-  value: $t.oneOfType([$t.string, $t.number])
+  value: ValueType
 });
 
 Select.propTypes = {
   className: $t.string,
-  options: $t.arrayOf(TypeOption).isRequired
+  options: $t.arrayOf(TypeOption).isRequired,
+  value: TypeOption,
+  onChange: $t.func,
+  clearable: $t.bool
 };
 
 

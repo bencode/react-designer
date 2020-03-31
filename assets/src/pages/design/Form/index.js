@@ -1,19 +1,25 @@
 import React from 'react';
-import $t from 'prop-types';
 import { Select, Number } from '@/form';
 import '@/form/style.less';
 import style from './style.less';
 
 
-const Form = () => {
-  const displayOptions = [
-    'block',
-    'flex',
-    'inline-flex',
-    'inline',
-    'inline-block'
-  ].map(value => ({ label: value }));
+const optionsFrom = list => list.map(value => ({ label: value, value }));
 
+const displayOptions = optionsFrom([
+  'block',
+  'flex',
+  'inline-flex',
+  'inline',
+  'inline-block'
+]);
+
+const unitOptions = optionsFrom([
+  'px', 'rm', 'rem', '%'
+]);
+
+
+const Form = () => {
   return (
     <div className={style.form}>
       <section className={style.section}>
@@ -34,6 +40,7 @@ const Form = () => {
             <label>width</label>
             <div className="control">
               <Number />
+              <Select options={unitOptions} />
             </div>
           </div>
         </div>
