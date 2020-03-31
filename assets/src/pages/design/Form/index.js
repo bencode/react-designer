@@ -1,6 +1,6 @@
 import React from 'react';
 import $t from 'prop-types';
-import { Select } from '@/form';
+import { Select, Number } from '@/form';
 import style from './style.less';
 
 
@@ -32,7 +32,7 @@ const Form = () => {
           <div className="field">
             <label>width</label>
             <div className="control">
-              <input type="number" />
+              <Number />
             </div>
           </div>
         </div>

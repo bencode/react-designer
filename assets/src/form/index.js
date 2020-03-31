@@ -1,3 +1,8 @@
 import Select from './Select';
+import { Text, Number } from './Input';
 
-export { Select };
+export {
+  Select,
+  Text,
+  Number
+};
