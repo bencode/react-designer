@@ -1,8 +1,18 @@
 import React from 'react';
 import $t from 'prop-types';
+import { Select } from '@/form';
 import style from './style.less';
 
+
 const Form = () => {
+  const displayOptions = [
+    'block',
+    'flex',
+    'inline-flex',
+    'inline',
+    'inline-block'
+  ].map(value => ({ label: value }));
+
   return (
     <div className={style.form}>
       <section className={style.section}>
@@ -11,13 +21,7 @@ const Form = () => {
           <div className="field">
             <label>display</label>
             <div className="control">
-              <select>
-                <option>block</option>
-                <option>inline</option>
-                <option>inline-block</option>
-                <option>flex</option>
-                <option>inline-flex</option>
-              </select>
+              <Select options={displayOptions} />
             </div>
           </div>
         </div>

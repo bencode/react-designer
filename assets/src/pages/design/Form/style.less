@@ -2,6 +2,29 @@
   height: 100%;
   padding: 10px;
   background: #ececec;
+
+  .field {
+    display: flex;
+    margin-bottom: 10px;
+
+    > label {
+      display: flex;
+      justify-content: flex-end;
+      width: 75px;
+      padding: 4px 5px;
+      font-weight: 400;
+    }
+  }
+
+  .control {
+    flex: 1;
+    .vx-select {
+      display: flex;
+      select {
+        flex: 1;
+      }
+    }
+  }
 }
 
 :local(.section) {
@@ -18,29 +41,5 @@
   > header {
     padding-bottom: 10px;
     color: #242424;
-  }
-
-  .field {
-    display: flex;
-    margin-bottom: 10px;
-
-    > label {
-      display: flex;
-      justify-content: flex-end;
-      width: 75px;
-      padding: 4px 5px;
-      font-weight: 400;
-    }
-  }
-
-  .control {
-    display: flex;
-    flex: 1;
-    > select {
-      flex: 1;
-    }
-    > input[type=number] {
-      flex: 1;
-    }
   }
 }
